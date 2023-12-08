@@ -1,0 +1,26 @@
+
+
+
+.menu {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+}
+
+.icon {
+    max-width: 80px;
+}
+
+.menuContent {
+    display: none;
+    position: absolute;
+    padding-left: 10px;
+}
+
+.menuItem {
+    display: block;
+}
+
+.show {
+    display: block;
+}
