@@ -69,7 +69,8 @@ function createNav() {
   navWrapper.appendChild(navIcon);
   navWrapper.appendChild(navDropDownContent);
 
-  navIcon.addEventListener("click", () => {
+  navIcon.addEventListener("click", (e) => {
+    e.stopPropagation(); // 
     navDropDownContent.classList.toggle("show");
   });
 
