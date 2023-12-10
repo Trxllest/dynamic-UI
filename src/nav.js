@@ -6,9 +6,23 @@ export default function nav(cls) {
   // eslint-disable-next-line prefer-template
   const target = document.querySelector("." + cls);
 
+
   if (target) {
     // eslint-disable-next-line no-use-before-define
-    target.appendChild(createNav());
+    const dropdown = createNav();
+    target.appendChild(dropdown);
+
+    document.addEventListener("click", (e) => {
+      const menuContent = dropdown.querySelector(".menuContent");
+
+      if (
+        !menuContent.contains(e.target) &&
+        !e.target.classList.contains("dropbtn")
+      ) {
+        // Clicked outside the dropdown, close it
+        menuContent.classList.remove("show");
+      }
+    });
   } else {
     console.error("Target element not found:", cls);
   }
@@ -22,7 +36,7 @@ function createNav() {
 
   // nav: Icon
   const navIcon = document.createElement("div");
-  navIcon.classList.add("icon");
+  navIcon.classList.add("dropbtn");
 
   navIcon.innerHTML =
     // eslint-disable-next-line quotes

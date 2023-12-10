@@ -7,7 +7,7 @@
     width: 100px;
 }
 
-.icon {
+.dropbtn {
     max-width: 80px;
     cursor: pointer; /* Add a cursor pointer for better UX */
 }
