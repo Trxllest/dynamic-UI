@@ -96,9 +96,11 @@ function createImgSlider() {
 
     const nextBtn = document.createElement("div");
     nextBtn.classList.add("next");
+    nextBtn.onclick = plusSlides(1);
 
     const prevBtn = document.createElement("div");
     prevBtn.classList.add("prev");
+    prevBtn.onclick =  plusSlides(-1);
 
     slideShowContainer.appendChild(prevBtn);
     slideShowContainer.appendChild(nextBtn);
@@ -111,12 +113,16 @@ function createImgSlider() {
     const dotContainer = document.createElement("div");
     const dot1 = document.createElement("span");
     dot1.classList.add("dot");
+    dot1.onclick = currentSlide(1);
     const dot2 = document.createElement("span");
     dot2.classList.add("dot");
+    dot2.onclick = currentSlide(2);
     const dot3 = document.createElement("span");
     dot3.classList.add("dot");
+    dot3.onclick = currentSlide(3);
     const dot4 = document.createElement("span");
     dot4.classList.add("dot");
+    dot4.onclick = currentSlide(4);
     dotContainer.appendChild(dot1);
     dotContainer.appendChild(dot2);
     dotContainer.appendChild(dot3);
