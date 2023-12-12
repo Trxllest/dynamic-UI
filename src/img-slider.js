@@ -1,25 +1,33 @@
 /* eslint-disable no-use-before-define */
 /* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 
-
 // Global
 let slideIndex = 1;
 showSlides(slideIndex);
 
-
 // Next/previous controls
 function plusSlides(n) {
-  showSlides(slideIndex += n);
+  showSlides((slideIndex += n));
 }
-
 
 // Thumbnail image controls
 function currentSlide(n) {
-  showSlides(slideIndex = n);
+  showSlides((slideIndex = n));
 }
 
 // Add slider to node: Input:'class', Return -> None
-export default function imgSlider(cls) {}
+export default function imgSlider(cls) {
+  // eslint-disable-next-line prefer-template
+  const target = document.querySelector("." + cls);
+
+  if (target) {
+    // eslint-disable-next-line no-use-before-define
+    const sliderComponent = createImgSlider();
+    target.appendChild(sliderComponent);
+  } else {
+    console.error("Target element not found:", cls);
+  }
+}
 
 // Function to show slides
 function showSlides(n) {
@@ -43,89 +51,87 @@ function showSlides(n) {
 }
 
 function createImgSlider() {
-    
-    // Container
-    const slideShowContainer = document.createElement("div");
-    slideShowContainer.classList.add("slideshow-container");
+  // Container
+  const slideShowContainer = document.createElement("div");
+  slideShowContainer.classList.add("slideshow-container");
 
+  // Full width images
 
-    // Full width images
+  // Slide #1
+  const slide1 = document.createElement("div");
+  slide1.classList.add("mySlides");
+  slide1.classList.add("fade");
 
-    // Slide #1
-    const slide1 = document.createElement("div");
-    slide1.classList.add("mySlides");
-    slide1.classList.add("fade");
-    
-    const img1 = new Image();
-    img1.src = 
-    slide1.appendChild(img1);
+  const img1 = new Image();
+  img1.src = slide1.appendChild(img1);
 
-    // Slide #2
-    const slide2 = document.createElement("div");
-    slide2.classList.add("mySlides");
-    slide2.classList.add("fade");
+  // Slide #2
+  const slide2 = document.createElement("div");
+  slide2.classList.add("mySlides");
+  slide2.classList.add("fade");
 
-    const img2 = new Image();
-    img2.src = 
-    slide2.appendChild(img2);
+  const img2 = new Image();
+  img2.src = slide2.appendChild(img2);
 
-    // Slide #3
-    const slide3 = document.createElement("div");
-    slide3.classList.add("mySlides");
-    slide3.classList.add("fade");
+  // Slide #3
+  const slide3 = document.createElement("div");
+  slide3.classList.add("mySlides");
+  slide3.classList.add("fade");
 
-    const img3 = new Image();
-    img3.src = 
-    slide3.appendChild(img3);
+  const img3 = new Image();
+  img3.src = slide3.appendChild(img3);
 
-    // Slide #4
-    const slide4 = document.createElement("div");
-    slide4.classList.add("mySlides");
-    slide4.classList.add("fade");
+  // Slide #4
+  const slide4 = document.createElement("div");
+  slide4.classList.add("mySlides");
+  slide4.classList.add("fade");
 
-    const img4 = new Image();
-    img4.src = 
-    slide4.appendChild(img4);
+  const img4 = new Image();
+  img4.src = slide4.appendChild(img4);
 
-    slideShowContainer.appendChild(slide1);
-    slideShowContainer.appendChild(slide2);
-    slideShowContainer.appendChild(slide3);
-    slideShowContainer.appendChild(slide4);
+  slideShowContainer.appendChild(slide1);
+  slideShowContainer.appendChild(slide2);
+  slideShowContainer.appendChild(slide3);
+  slideShowContainer.appendChild(slide4);
 
-    // Next and Prev Btns
+  // Next and Prev Btns
 
-    const nextBtn = document.createElement("div");
-    nextBtn.classList.add("next");
-    nextBtn.onclick = plusSlides(1);
+  const nextBtn = document.createElement("a");
+  nextBtn.textContent = "&#10095;";
+  nextBtn.classList.add("next");
+  nextBtn.onclick = plusSlides(1);
 
-    const prevBtn = document.createElement("div");
-    prevBtn.classList.add("prev");
-    prevBtn.onclick =  plusSlides(-1);
+  const prevBtn = document.createElement("a");
+  prevBtn.textContent = "&#10094;";
+  prevBtn.classList.add("prev");
+  prevBtn.onclick = plusSlides(-1);
 
-    slideShowContainer.appendChild(prevBtn);
-    slideShowContainer.appendChild(nextBtn);
+  slideShowContainer.appendChild(prevBtn);
+  slideShowContainer.appendChild(nextBtn);
 
-    // Insert break after container
-    const brk = document.createElement("br");
-    slideShowContainer.parentNode.insertBefore(brk, slideShowContainer.nextSibling);
+  // Insert break after container
+  const brk = document.createElement("br");
+  slideShowContainer.parentNode.insertBefore(
+    brk,
+    slideShowContainer.nextSibling
+  );
 
-    // Dots
-    const dotContainer = document.createElement("div");
-    const dot1 = document.createElement("span");
-    dot1.classList.add("dot");
-    dot1.onclick = currentSlide(1);
-    const dot2 = document.createElement("span");
-    dot2.classList.add("dot");
-    dot2.onclick = currentSlide(2);
-    const dot3 = document.createElement("span");
-    dot3.classList.add("dot");
-    dot3.onclick = currentSlide(3);
-    const dot4 = document.createElement("span");
-    dot4.classList.add("dot");
-    dot4.onclick = currentSlide(4);
-    dotContainer.appendChild(dot1);
-    dotContainer.appendChild(dot2);
-    dotContainer.appendChild(dot3);
-    dotContainer.appendChild(dot4);
-
+  // Dots
+  const dotContainer = document.createElement("div");
+  const dot1 = document.createElement("span");
+  dot1.classList.add("dot");
+  dot1.onclick = currentSlide(1);
+  const dot2 = document.createElement("span");
+  dot2.classList.add("dot");
+  dot2.onclick = currentSlide(2);
+  const dot3 = document.createElement("span");
+  dot3.classList.add("dot");
+  dot3.onclick = currentSlide(3);
+  const dot4 = document.createElement("span");
+  dot4.classList.add("dot");
+  dot4.onclick = currentSlide(4);
+  dotContainer.appendChild(dot1);
+  dotContainer.appendChild(dot2);
+  dotContainer.appendChild(dot3);
+  dotContainer.appendChild(dot4);
 }
